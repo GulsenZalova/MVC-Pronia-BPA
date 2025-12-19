@@ -1,5 +1,6 @@
 using System.Reflection.Metadata;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using ProniaApp.DAL;
 using ProniaApp.Models;
 using ProniaApp.ViewModels;
@@ -28,8 +29,12 @@ namespace ProniaApp.Controllers
                 // Slides= slides.Take(2).ToList(),
                 // Slides= slides.OrderBy(s=>s.Order).Take(2).ToList(),
                  Slides= _context.Slides.OrderBy(s=>s.Order).Take(2).ToList(),
+                 Products= _context.Products.Include(p=>p.Category).ToList(),
              };
+            
+
             return View(homeVM);
+        
         }
 
 
