@@ -13,5 +13,4 @@ namespace ProniaApp.DAL
        public DbSet<Category> Categories { get;set;}
        public DbSet<ProductImage> ProductsImages { get;set;}
     }
-
 }

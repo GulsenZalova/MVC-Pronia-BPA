@@ -15,21 +15,18 @@ namespace ProniaApp.Controllers
         {
             _context = context; 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
 
         {
-       
-
-            // _context.Slides.AddRange(slides);   
-            // _context.SaveChanges();
+            
            
              HomeVM homeVM = new HomeVM
              {
                 //  Slides= slides.OrderBy(s=>s.Order).ToList()
                 // Slides= slides.Take(2).ToList(),
                 // Slides= slides.OrderBy(s=>s.Order).Take(2).ToList(),
-                 Slides= _context.Slides.OrderBy(s=>s.Order).Take(2).ToList(),
-                 Products= _context.Products.Include(p=>p.Category).ToList(),
+                 Slides= await _context.Slides.OrderBy(s=>s.Order).Take(2).ToListAsync(),
+                 Products=await  _context.Products.Include(p=>p.ProductImages).ToListAsync(),
              };
             
 
