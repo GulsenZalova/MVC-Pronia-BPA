@@ -957,6 +957,14 @@
       "PackagePath": "staticwebassets/assets/images/website-images/3.png"
     },
     {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/WhatsApp Image 2025-10-07 at 12.53.26.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-images/WhatsApp Image 2025-10-07 at 12.53.26.jpeg"
+    },
+    {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/agirsekil.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-images/agirsekil.jpeg"
+    },
+    {
       "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/car.png",
       "PackagePath": "staticwebassets/assets/images/website-images/car.png"
     },
@@ -969,12 +977,28 @@
       "PackagePath": "staticwebassets/assets/images/website-images/dark.png"
     },
     {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/my_flower.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-images/my_flower.jpeg"
+    },
+    {
       "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/quotation.png",
       "PackagePath": "staticwebassets/assets/images/website-images/quotation.png"
     },
     {
       "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-images/service.png",
       "PackagePath": "staticwebassets/assets/images/website-images/service.png"
+    },
+    {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-imagesWhatsApp Image 2025-10-07 at 12.53.26.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-imagesWhatsApp Image 2025-10-07 at 12.53.26.jpeg"
+    },
+    {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-imagesagirsekil.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-imagesagirsekil.jpeg"
+    },
+    {
+      "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/images/website-imagesmy_flower.jpeg",
+      "PackagePath": "staticwebassets/assets/images/website-imagesmy_flower.jpeg"
     },
     {
       "Id": "/Users/gulshanzalova/Desktop/MVCProjects-BPA/ProniaApp/wwwroot/assets/js/main.js",

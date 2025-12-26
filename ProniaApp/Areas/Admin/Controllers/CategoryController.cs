@@ -105,7 +105,7 @@ namespace ProniaApp.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-      
+
         public async Task<ActionResult> Delete(int? id)
         {
               if(id==null || id < 1)
@@ -120,9 +120,8 @@ namespace ProniaApp.Admin.Controllers
                 return NotFound();
             }
             
-            // await _context.Categories.Remove(category);
-             category.IsDeleted=true;
-            //  await _context.SaveChangesAsync();
+             _context.Categories.Remove(category);
+             await _context.SaveChangesAsync();
             
             return RedirectToAction(nameof(Index));
         } 
