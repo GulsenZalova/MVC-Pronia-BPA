@@ -1,11 +1,15 @@
 @using ProniaApp.Admin.ViewModels
-@model CreateSlideVM
+@model UpdateSlideVM
  <div class="row">
       <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Add Slide</h4>
+                  <h4 class="card-title">Update Slide</h4>
                   <form class="forms-sample" method="post" enctype="multipart/form-data">
+                      <div class="form-group">
+                       <img src="~/assets/images/website-images/@Model.Image" alt="">
+                       <input type="text" asp-for="Image" hidden >
+                    </div>
                     <div class="form-group">
                       <label for="Photo">Image</label>
                       <input asp-for="Photo" class="form-control" accept="image/*" placeholder="Photo">
