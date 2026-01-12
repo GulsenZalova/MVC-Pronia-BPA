@@ -222,9 +222,11 @@
                   <div class="product-category product-tags">
                     <span class="title">Tags :</span>
                     <ul>
-                      <li>
-                        <a href="#">Furniture</a>
+                       @foreach(ProductTag pTag in Model.Product.ProductTags){
+                         <li>
+                        <a href="#">@pTag.Tag.Name</a>
                       </li>
+                       }
                     </ul>
                   </div>
                   <div

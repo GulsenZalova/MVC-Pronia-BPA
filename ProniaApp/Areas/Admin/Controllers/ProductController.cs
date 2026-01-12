@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProniaApp.Admin.ViewModels;
@@ -7,7 +8,7 @@ using ProniaApp.Models;
 namespace ProniaApp.Admin.Controllers
 {
     [Area("Admin")]
-
+    // [Authorize(Roles = "Admin,Moderator")]
     public class ProductController : Controller
     {
         private readonly AppDbContext _context;
@@ -17,6 +18,10 @@ namespace ProniaApp.Admin.Controllers
             _context = context;
             _env = env;
         }
+
+
+
+
 
         public async Task<IActionResult> Index()
         {
@@ -41,14 +46,15 @@ namespace ProniaApp.Admin.Controllers
         {
             CreateProductVM createProductVM = new CreateProductVM()
             {
-                Categories= await _context.Categories.ToListAsync()
+                Categories= await _context.Categories.ToListAsync(),
+                Tags= await _context.Tags.ToListAsync()
             };
             return View(createProductVM);
         }
         
 
         [HttpPost]
-        public async Task<IActionResult> Create(CreateProductVM createProductVM)
+             public async Task<IActionResult> Create(CreateProductVM createProductVM)
         {
             createProductVM.Categories = await _context.Categories.ToListAsync();
             if (!ModelState.IsValid)
@@ -78,6 +84,78 @@ namespace ProniaApp.Admin.Controllers
             await _context.Products.AddAsync(product);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> Update(int? id)
+        {
+            if(id==null || id < 1)
+            {
+                return BadRequest();
+            }
+
+            Product product = await _context.Products.FirstOrDefaultAsync(p=>p.Id==id);
+
+            if (product is null)
+            {
+                return NotFound();
+            }
+
+             UpdateProductVM updateProductVM=new UpdateProductVM()
+             {
+                 Name=product.Name,
+                 Price=product.Price,
+                 SKU=product.SKU,   
+                 Description=product.Description,
+                 CategoryId=product.CategoryId,   
+                 Categories= await _context.Categories.ToListAsync()
+             };
+
+            return View(updateProductVM);
+        }
+
+
+        [HttpPost]
+        
+        public async Task<ActionResult> Update(int? id, UpdateProductVM updateProductVM)
+        {
+              if(id==null || id < 1)
+            {
+                return BadRequest();
+            }
+
+            Product exists = await _context.Products.FirstOrDefaultAsync(p=>p.Id==id);
+
+            if (exists is null)
+            {
+                return NotFound();
+            }
+            updateProductVM.Categories= await _context.Categories.ToListAsync();
+            if (!ModelState.IsValid)
+            {
+                return View(updateProductVM);
+            }
+
+            bool result= await _context.Categories.AnyAsync(c=>c.Id==updateProductVM.CategoryId);
+
+            if (!result)
+            {
+                ModelState.AddModelError(nameof(Category.Id),"bele category yoxdur");
+            }
+             
+             exists.Name=updateProductVM.Name;
+             exists.Price=updateProductVM.Price;
+             exists.Description=updateProductVM.Description;
+             exists.CategoryId=updateProductVM.CategoryId.Value;
+             exists.SKU=updateProductVM.SKU;
+            
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+
+        }
+
+        private static string Roles(string v1, string v2)
+        {
+            throw new NotImplementedException();
         }
     }
 

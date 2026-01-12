@@ -2,7 +2,7 @@ using ProniaApp.Models;
 
 namespace ProniaApp.Admin.ViewModels
 {
-    public class CreateProductVM
+    public class UpdateProductVM
     {
        public string Name { get; set; }
        public decimal Price { get; set; }   
@@ -10,12 +10,9 @@ namespace ProniaApp.Admin.ViewModels
        public string Description { get; set; }
        public string SKU { get; set; }  
         public int? CategoryId { get; set; }
-
-        public int[]? TagIds { get; set; }
        
        public List<Category>? Categories { get; set; }
-       
-       public List<Tag>? Tags{ get; set; }
+
 
     }
 }

@@ -1,11 +1,10 @@
 @using ProniaApp.Admin.ViewModels
 @using ProniaApp.Models
-@model CreateProductVM
- <div class="row">
+@model UpdateProductVM
       <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Add Product</h4>
+                  <h4 class="card-title">Update Product</h4>
                   <form class="forms-sample" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                       <label for="Name">Name</label>
@@ -22,22 +21,25 @@
                       <input asp-for="SKU" class="form-control"  placeholder="SKU">
                       <span asp-validation-for="SKU" style="color:red"></span>
                     </div>
-                     <div class="form-group">
+                       <div class="form-group">
                       <label asp-for="CategoryId" for="CategoryId">Category</label>
-                       <select asp-for="CategoryId" name="CategoryId" id="CategoryId">
+                       <select asp-for="CategoryId" name="CategoryId" id="CategoryId" asp-items="new SelectList(Model.Categories,nameof(Category.Id),nameof(Category.Name))" >
+                          <option selected disabled  >Choose Option</option>
+                       </select>
+                      <span asp-validation-for="CategoryId" style="color:red"></span>
+                    </div>
+
+
+                     @* <div class="form-group">
+                      <label asp-for="CategoryId" for="CategoryId">Category</label>
+                       <select asp-for="CategoryId" name="CategoryId" id="CategoryId" >
                           @foreach(Category category in Model.Categories){
                              <option value="@category.Id">@category.Name</option>
                           }
                           <option selected disabled  >Choose Option</option>
                        </select>
                       <span asp-validation-for="CategoryId" style="color:red"></span>
-                    </div>
-                     <div class="form-group">
-                      <label asp-for="TagIds" for="TagIds">Tags</label>
-                       <select asp-for="TagIds" name="TagIds" id="TagIds" asp-items="new SelectList(Model.Tags,nameof(Tag.Id),nameof(Tag.Name))" >
-                       </select>
-                      <span asp-validation-for="CategoryId" style="color:red"></span>
-                    </div>
+                    </div> *@
                      <div class="form-group">
                       <label for="Description">Description</label>
                       <textarea asp-for="Description" class="form-control"  placeholder="Description"></textarea>

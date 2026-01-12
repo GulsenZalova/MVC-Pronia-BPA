@@ -24,7 +24,13 @@ namespace ProniaApp.Controllers
             {
                 return BadRequest();
             }
-            Product product= _context.Products.Include(p=>p.ProductImages).Include(p=>p.Category).FirstOrDefault(p => p.Id==id);
+            Product product= 
+            _context.Products
+            .Include(p=>p.ProductImages)
+            .Include(p=>p.Category)
+            .Include(p=>p.ProductTags)
+            .ThenInclude(p=>p.Tag)
+            .FirstOrDefault(p => p.Id==id);
 
             if (product == null)
             {
